@@ -10,6 +10,9 @@ import {MatButtonModule} from "@angular/material/button";
 import { HeaderComponent } from './header/header.component';
 import { DocumentListComponent } from './document-list/document-list.component';
 import { DocumentPanelComponent } from './document-list/document-panel/document-panel.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatBadgeModule} from "@angular/material/badge";
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { DocumentPanelComponent } from './document-list/document-panel/document-
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
 import {DocumentService} from "./document.service";
 
+
 @Injectable({providedIn: 'root'})
 export class SearchService {
 
@@ -11,7 +12,6 @@ export class SearchService {
   }
 
   searchDocuments(searchQuery : string, from : string, to : string, aggregation : string, mode : string) {
-
   }
 
 }
