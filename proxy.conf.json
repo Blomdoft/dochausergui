@@ -1,0 +1,10 @@
+{
+  "/dochausersrv/*": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/archive/*": {
+    "target": "http://localhost:8080",
+    "secure": false
+  }
+}
