@@ -1,3 +1,11 @@
 <mat-card>
-  <span matBadge="4" matBadgeOverlap="true">{{document.name}}</span>
+  <div class="headerfields">
+    <span class="date" >{{getDisplayDate()}}</span>
+    <span class="flex-spacer">&nbsp;</span>
+    <span class="pagecount" (click)="advancePreviewPage()">{{getCurrentPreviewPage()+1 + "/ " + getNumberOfPages()}}</span>
+  </div>
+  <a href="{{getFullDocumentURL()}}" target="_blank">
+  <img class="previewImage" src="{{getPreviewPageURL()}}" alt="">
+  </a>
+
  </mat-card>

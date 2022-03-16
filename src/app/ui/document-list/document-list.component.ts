@@ -20,14 +20,13 @@ export class DocumentListComponent implements OnInit {
   }
 
   setColumns() {
-    this.columns = Math.floor(this.box.nativeElement.clientWidth / 300);
+    this.columns = Math.floor(this.box.nativeElement.clientWidth / 270);
   }
 
   ngOnInit(): void {
-    this.documents = this.documentService.getSearchResults();
+    this.documentService.getSearchResults().subscribe(searchResult => this.documents = searchResult);
     console.log(this.documents);
     this.setColumns();
-
   }
 
 }

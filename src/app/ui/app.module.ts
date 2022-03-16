@@ -13,6 +13,10 @@ import { DocumentPanelComponent } from './document-list/document-panel/document-
 import {MatCardModule} from "@angular/material/card";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatBadgeModule} from "@angular/material/badge";
+import {MatInputModule} from "@angular/material/input";
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {RouterModule} from "@angular/router";
 
 @NgModule({
   declarations: [
@@ -21,17 +25,21 @@ import {MatBadgeModule} from "@angular/material/badge";
     DocumentListComponent,
     DocumentPanelComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatGridListModule,
-    MatBadgeModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatGridListModule,
+        MatBadgeModule,
+        MatInputModule,
+        HttpClientModule,
+        RouterModule.forRoot([]),
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

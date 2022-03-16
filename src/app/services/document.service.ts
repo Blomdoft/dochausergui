@@ -1,19 +1,20 @@
 import {Injectable} from "@angular/core";
 import {PDFDocument} from "../model/document.model";
 import searchResult from './dummysearch.json';
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({providedIn: 'root'})
 export class DocumentService {
-  private searchResult: PDFDocument[] = [];
   private archiveRoot : string = "";
 
+  private _searchResult: BehaviorSubject<PDFDocument[]> = new BehaviorSubject(<PDFDocument[]>[]);
+  public readonly searchResult: Observable<PDFDocument[]> = this._searchResult.asObservable();
+
   constructor() {
-    let jsonSearchResults: any = searchResult;
-    this.searchResult = <PDFDocument[]> jsonSearchResults;
   }
 
   setNewSearchResults(searchResult : PDFDocument[]) {
-    this.searchResult = searchResult
+    this._searchResult.next(searchResult);
   }
 
   getSearchResults() {

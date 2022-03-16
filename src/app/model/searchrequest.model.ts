@@ -1,8 +1,8 @@
-enum SearchAggregation {
+export enum SearchAggregation {
   AND ="AND",
   OR = "OR"
 }
-enum SearchMode {
+export enum SearchMode {
   EXACT ="EXACT",
   FUZZY = "FUZZY"
 }
@@ -12,5 +12,5 @@ export interface SearchRequest {
   mode: SearchMode
   from : string
   to : string
-  queryterms : string[]
+  queryTerms : string[]
 }

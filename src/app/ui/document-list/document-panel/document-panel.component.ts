@@ -27,7 +27,7 @@ export class DocumentPanelComponent implements OnInit {
   }
 
   advancePreviewPage() : void {
-    this.currentPreviewPage = this.currentPreviewPage+1 % this.getNumberOfPages();
+    this.currentPreviewPage = (this.currentPreviewPage+1) % this.getNumberOfPages();
   }
 
   getCurrentPreviewPage() : number {
@@ -35,11 +35,28 @@ export class DocumentPanelComponent implements OnInit {
   }
 
   getPreviewPageURL() : string {
-    return this.document.thumbnails[this.currentPreviewPage].imdirectory+this.document.thumbnails[this.currentPreviewPage].imgname;
+    return this.document.thumbnails[this.currentPreviewPage].imgdirectory+this.document.thumbnails[this.currentPreviewPage].imgname;
   }
 
   getFullDocumentURL() : string {
     return this.document.directory + this.document.name;
   }
 
+  getDisplayDate() : string {
+
+    let year: string = this.document.timestamp.substring(0, 4);
+    let month: string = this.document.timestamp.substring(4, 6);
+    let day: string = this.document.timestamp.substring(6, 8);
+
+    let hour: string = this.document.timestamp.substring(9, 11);
+    let minute: string = this.document.timestamp.substring(11, 13);
+
+    return day + "-"+month+"-"+year + " " +hour+":"+minute;
+
+ }
+
+
+
+
 }
+

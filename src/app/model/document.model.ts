@@ -11,7 +11,7 @@ export interface PDFDocument {
 
 export interface Thumbnail {
   imgname: string
-  imdirectory: string
+  imgdirectory: string
 }
 
 export interface Tag {

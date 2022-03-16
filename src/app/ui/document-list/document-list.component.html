@@ -1,6 +1,6 @@
 <div id="box" #box>
-  <mat-grid-list [cols]="columns" (window:resize)="setColumns()" rowHeight="100px" width="100%">
-    <mat-grid-tile *ngFor="let document of documents">
+  <mat-grid-list [cols]="columns" (window:resize)="setColumns()" rowHeight="400px"  gutterSize="1" >
+    <mat-grid-tile *ngFor="let document of documents" >
     <app-document-panel
         [document]="document">
     </app-document-panel>

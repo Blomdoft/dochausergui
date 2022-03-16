@@ -1,8 +1,20 @@
 <mat-toolbar color="primary">
+<mat-toolbar-row>
 
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <span>Doc Hauser</span>
+  <span class="flex-spacer"></span>
+
+  <mat-icon matPrefix >search</mat-icon>
+  <input class="mat-h2 search-input" matInput placeholder="Search" autofocus [(ngModel)]="searchTerm"
+         (input)="changeSearchTerm()">
+  <button matSuffix mat-icon-button aria-label="Clear" color="primary" (click)="clearSearchTerm()">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <span class="flex-spacer"></span>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" >
     <mat-icon>menu</mat-icon>
   </button>
-  <span class="example-spacer"></span>
-  <span>Doc Hauser</span>
+
+</mat-toolbar-row>
 </mat-toolbar>

@@ -1,0 +1,12 @@
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.search-input {
+  margin: 1%;
+  padding-left: 10px;
+  margin-left: 10px;
+  margin-right: -40px;
+  width: 70%;
+  height: 70%;
+}
