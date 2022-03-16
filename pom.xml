@@ -39,7 +39,7 @@
               <goal>npm</goal>
             </goals>
             <configuration>
-              <arguments>run build -- --base-href="/dochausergui/"</arguments>
+              <arguments>run build -- --base-href=/dochausergui/</arguments>
             </configuration>
           </execution>
         </executions>
