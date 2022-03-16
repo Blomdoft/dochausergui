@@ -13,7 +13,7 @@
   <parent>
     <groupId>com.skritten.dochauser</groupId>
     <artifactId>dochausermain</artifactId>
-    <version>1.0</version>
+    <version>1.0.0</version>
     <relativePath>../dochauserbuild</relativePath>
   </parent>
   <build>
