@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
   }
 
   private executeSearch() {
-    this.searchService.searchDocuments(this.searchTerm, "", "", SearchAggregation.OR, SearchMode.FUZZY);
+    this.searchService.searchDocuments(this.searchTerm, 0, "", "", SearchAggregation.OR, SearchMode.FUZZY);
   }
 
 }

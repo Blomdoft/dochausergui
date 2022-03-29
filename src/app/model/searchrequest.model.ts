@@ -10,7 +10,9 @@ export enum SearchMode {
 export interface SearchRequest {
   aggregation: SearchAggregation
   mode: SearchMode
+  skip : number
   from : string
   to : string
   queryTerms : string[]
 }
+

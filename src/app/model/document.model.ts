@@ -17,3 +17,8 @@ export interface Thumbnail {
 export interface Tag {
   tagname: string
 }
+
+export interface SearchDocResult {
+  documents: PDFDocument[]
+  hitCount: number
+}
