@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {SearchService} from "../../services/search.service";
 import {SearchAggregation, SearchMode} from "../../model/searchrequest.model";
+import { MatDialog } from '@angular/material/dialog';
+import {DefineTagDialogComponent} from "../tags/define-tag-dialog/define-tag-dialog.component";
+
 
 @Component({
   selector: 'app-header',
@@ -12,7 +15,8 @@ export class HeaderComponent implements OnInit {
   searchTerm : string ="";
   timerHandle : any;
 
-  constructor(private searchService: SearchService) {
+  constructor(public dialog: MatDialog, private searchService: SearchService) {
+    // , public dialog: MatDialog
   }
 
   ngOnInit(): void {
@@ -34,6 +38,12 @@ export class HeaderComponent implements OnInit {
 
   private executeSearch() {
     this.searchService.searchDocuments(this.searchTerm, 0, "", "", SearchAggregation.OR, SearchMode.FUZZY);
+  }
+
+  public openDefineTagsDialog() {
+    this.dialog.open(DefineTagDialogComponent, {
+      width: '90%'
+         })
   }
 
 }

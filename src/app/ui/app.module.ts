@@ -17,29 +17,37 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
+import {MatMenuModule} from "@angular/material/menu";
+import { DefineTagDialogComponent } from './tags/define-tag-dialog/define-tag-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatChipsModule} from "@angular/material/chips";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     DocumentListComponent,
-    DocumentPanelComponent
+    DocumentPanelComponent,
+    DefineTagDialogComponent
   ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatCardModule,
-        MatGridListModule,
-        MatBadgeModule,
-        MatInputModule,
-        HttpClientModule,
-        RouterModule.forRoot([]),
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatBadgeModule,
+    MatInputModule,
+    HttpClientModule,
+    RouterModule.forRoot([]),
+    MatMenuModule,
+    MatDialogModule,
+    MatChipsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,22 @@
+<mat-form-field class="example-chip-list" appearance="fill">
+  <mat-label>Defined Tags</mat-label>
+  <mat-chip-list #tagList aria-label="Fruit selection">
+    <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+      {{tag.tagname}}
+      <button matChipRemove>
+        <mat-icon>cancel</mat-icon>
+      </button>
+    </mat-chip>
+    <input placeholder="New tag..."
+           [matChipInputFor]="tagList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="addOnBlur"
+           (matChipInputTokenEnd)="add($event)">
+  </mat-chip-list>
+</mat-form-field>
+
+<p>Tags can be easily added and removed. They will however not be removed from the
+  present documents, you will just define here if the tags are avvailable for drag and drop.</p>
+
+<button mat-button (click)="closeDialogCancel()">Cancel</button>
+<button mat-button (click)="closeDialogSave()">Save</button>
