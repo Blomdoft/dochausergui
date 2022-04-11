@@ -3,6 +3,9 @@ import {SearchService} from "../../services/search.service";
 import {SearchAggregation, SearchMode} from "../../model/searchrequest.model";
 import { MatDialog } from '@angular/material/dialog';
 import {DefineTagDialogComponent} from "../tags/define-tag-dialog/define-tag-dialog.component";
+import {TagsService} from "../../services/tags.service";
+import {Tag} from "../../model/document.model";
+import {MatChip} from "@angular/material/chips";
 
 
 @Component({
@@ -12,14 +15,22 @@ import {DefineTagDialogComponent} from "../tags/define-tag-dialog/define-tag-dia
 })
 export class HeaderComponent implements OnInit {
 
+  expandedHeader : boolean = false;
   searchTerm : string ="";
   timerHandle : any;
+  tags! : Tag[];
+  selectedTags : Tag[] = [];
 
-  constructor(public dialog: MatDialog, private searchService: SearchService) {
+  constructor(public dialog: MatDialog, private searchService: SearchService, private tagsService: TagsService) {
     // , public dialog: MatDialog
   }
 
   ngOnInit(): void {
+    this.searchService.searchDocuments("", 0, "", "", SearchAggregation.OR, SearchMode.FUZZY);
+    this.tagsService.tagResult.subscribe(tagResult => {
+      this.tags = Array.from(tagResult);
+      this.selectedTags = [];
+    });
   }
 
   clearSearchTerm() {
@@ -44,6 +55,25 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(DefineTagDialogComponent, {
       width: '90%'
          })
+  }
+
+  toggleExpandedHeader() {
+    this.expandedHeader = !this.expandedHeader;
+  }
+
+  toggleTagSelection(c: MatChip) {
+    c.toggleSelected();
+    if (c.selected) {
+      this.selectedTags.push({tagname: c.value});
+    } else {
+      const index = this.selectedTags.indexOf({tagname: c.value});
+      if (index > -1) {
+        this.selectedTags.splice(index, 1); // 2nd parameter means remove one item only
+      }
+    }
+    this.changeSearchTerm();
+
+    console.log(this.selectedTags)
   }
 
 }

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {PDFDocument} from "../../../model/document.model";
+import {PDFDocument, Tag} from "../../../model/document.model";
 import {Location} from "@angular/common";
 
 @Component({
@@ -52,6 +52,9 @@ export class DocumentPanelComponent implements OnInit {
     return day + "-"+month+"-"+year + " " +hour+":"+minute;
  }
 
+  getTags() : Tag[] {
+    return this.document.tags;
+  }
 
 }
 

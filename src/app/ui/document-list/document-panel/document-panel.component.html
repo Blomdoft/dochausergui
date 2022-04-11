@@ -8,4 +8,20 @@
   <img class="previewImage" src="{{getPreviewPageURL()}}" alt="">
   </a>
 
- </mat-card>
+  <div class ="tagsoverlay">
+
+    <div class="chiplist">
+      <mat-chip-list>
+          <mat-chip *ngFor="let tag of getTags()">
+            {{tag.tagname}}
+          </mat-chip>
+        </mat-chip-list>
+    </div>
+    <div class="flex-spacer">&nbsp;
+    </div>
+
+  </div>
+
+
+
+</mat-card>

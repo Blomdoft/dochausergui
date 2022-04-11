@@ -42,6 +42,7 @@ export class TagsService {
   setTags(tags: Tag[]) {
     const url = location.origin + "/dochausersrv/tag";
     this.http.put(url, tags).subscribe();
+    this._tagsResult.next(tags);
   }
 
 }

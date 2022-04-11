@@ -21,6 +21,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import { DefineTagDialogComponent } from './tags/define-tag-dialog/define-tag-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatChipsModule} from "@angular/material/chips";
+import {DragDropModule} from "@angular/cdk/drag-drop";
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {MatChipsModule} from "@angular/material/chips";
     RouterModule.forRoot([]),
     MatMenuModule,
     MatDialogModule,
-    MatChipsModule
+    MatChipsModule,
+    DragDropModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -2,6 +2,7 @@
   flex: 1 1 auto;
 }
 
+
 .search-input {
   margin: 1%;
   padding-left: 10px;
@@ -9,6 +10,12 @@
   margin-right: -40px;
   width: 70%;
   height: 70%;
+  background-color: white;
+  color: #000066;
 }
-
+.tagbar {
+  max-height: fit-content;
+  height: fit-content;
+  margin: 10px;
+}
 

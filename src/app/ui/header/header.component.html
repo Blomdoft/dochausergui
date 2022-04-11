@@ -4,15 +4,22 @@
   <span>Doc Hauser</span>
   <span class="flex-spacer"></span>
 
-  <mat-icon matPrefix >search</mat-icon>
-  <input class="mat-h2 search-input" matInput placeholder="Search" autofocus [(ngModel)]="searchTerm"
+  <!-- <mat-icon matPrefix >search</mat-icon> -->
+  <button mat-icon-button (click)="toggleExpandedHeader()">
+    <mat-icon *ngIf="!expandedHeader">expand_more</mat-icon>
+    <mat-icon *ngIf="expandedHeader">expand_less</mat-icon>
+  </button>
+
+  <input class="mat-h2 search-input searchField" matInput placeholder="Search" autofocus [(ngModel)]="searchTerm"
          (input)="changeSearchTerm()">
   <button matSuffix mat-icon-button aria-label="Clear" color="primary" (click)="clearSearchTerm()">
     <mat-icon>close</mat-icon>
   </button>
 
   <span class="flex-spacer"></span>
-  <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon" >
+
+
+  <button mat-icon-button [matMenuTriggerFor]="menu" >
     <mat-icon>menu</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
@@ -20,4 +27,19 @@
   </mat-menu>
 
 </mat-toolbar-row>
+
+<mat-toolbar-row *ngIf="expandedHeader" class="tagbar">
+
+  <mat-chip-list selectable multiple cdkDropList cdkDropListOrientation="horizontal" >
+    <mat-chip #c="matChip" *ngFor="let tag of tags" [value]="tag.tagname" (click)="toggleTagSelection(c)" cdkDrag>
+      <mat-icon *ngIf="c.selected">check</mat-icon>
+      {{tag.tagname}}
+    </mat-chip>
+  </mat-chip-list>
+
+</mat-toolbar-row>
+
+
+
+
 </mat-toolbar>
