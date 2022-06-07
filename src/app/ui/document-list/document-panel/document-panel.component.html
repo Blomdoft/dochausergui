@@ -15,10 +15,14 @@
 
       <div class="chiplist">
         <mat-chip-list>
-            <mat-chip *ngFor="let tag of getTags()">
+          <a href="javascript:void(0)" >
+            <mat-chip *ngFor="let tag of getTags()" (click)="tagClicked(tag.tagname)">
               {{tag.tagname}}
+              <mat-icon *ngIf="tagMarkedForDeletion(tag.tagname)" (click)="removeTag(tag.tagname)">delete</mat-icon >
             </mat-chip>
-          </mat-chip-list>
+          </a>
+
+  </mat-chip-list>
       </div>
       <div class="flex-spacer">&nbsp;
       </div>

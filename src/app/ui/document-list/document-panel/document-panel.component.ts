@@ -14,6 +14,7 @@ export class DocumentPanelComponent implements OnInit {
 
   @Input() document: PDFDocument;
   currentPreviewPage: number = 0;
+  markedTag! : string;
 
   constructor(private location: Location, private documentService : DocumentService) {
     // proper init of empty document makes this safer
@@ -74,6 +75,27 @@ export class DocumentPanelComponent implements OnInit {
     });
     if (!tagAlreadyPresent) {
       this.document.tags.push(newTag);
+    }
+  }
+
+  tagClicked(tagname: string) {
+    if (this.markedTag == tagname) {
+      this.markedTag = "";
+    } else {
+      this.markedTag = tagname;
+    }
+  }
+
+  tagMarkedForDeletion(tagname: string) : boolean {
+    return (this.markedTag === tagname);
+  }
+
+  removeTag(tagname: string)  {
+    this.documentService.removeTag(this.document, {tagname: tagname});
+
+    const index = this.document.tags.map(e => e.tagname).indexOf(tagname);
+    if (index > -1) {
+      this.document.tags.splice(index, 1); // 2nd parameter means remove one item only
     }
   }
 

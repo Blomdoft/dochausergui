@@ -39,7 +39,6 @@ export class HeaderComponent implements OnInit {
   }
 
   // Handling a slight timeout delay so that not every key stroke leads to a search
-
   changeSearchTerm() {
     // term was changed, reset entry timer
     clearTimeout(this.timerHandle);
@@ -77,5 +76,5 @@ export class HeaderComponent implements OnInit {
   isSelected(tagname: string) {
     return this.selectedTags.map(e => e.tagname).indexOf(tagname) != -1;
   }
-  
+
 }
