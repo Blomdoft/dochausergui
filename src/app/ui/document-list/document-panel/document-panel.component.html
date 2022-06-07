@@ -1,27 +1,29 @@
+<div cdkDropList (cdkDropListDropped)="drop($event)">
 <mat-card>
-  <div class="headerfields">
+    <div class="headerfields">
     <span class="date" >{{getDisplayDate()}}</span>
     <span class="flex-spacer">&nbsp;</span>
     <span class="pagecount" (click)="advancePreviewPage()">{{getCurrentPreviewPage()+1 + "/ " + getNumberOfPages()}}</span>
   </div>
   <a href="{{getFullDocumentURL()}}" target="_blank">
-  <img class="previewImage" src="{{getPreviewPageURL()}}" alt="">
+       <img class="previewImage" src="{{getPreviewPageURL()}}" alt="">
+
   </a>
+  <a href="{{getFullDocumentURL()}}" target="_blank">
 
-  <div class ="tagsoverlay">
+    <div class ="tagsoverlay">
 
-    <div class="chiplist">
-      <mat-chip-list>
-          <mat-chip *ngFor="let tag of getTags()">
-            {{tag.tagname}}
-          </mat-chip>
-        </mat-chip-list>
+      <div class="chiplist">
+        <mat-chip-list>
+            <mat-chip *ngFor="let tag of getTags()">
+              {{tag.tagname}}
+            </mat-chip>
+          </mat-chip-list>
+      </div>
+      <div class="flex-spacer">&nbsp;
+      </div>
     </div>
-    <div class="flex-spacer">&nbsp;
-    </div>
 
-  </div>
-
-
-
-</mat-card>
+  </a>
+  </mat-card>
+</div>

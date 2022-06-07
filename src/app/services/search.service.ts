@@ -3,7 +3,7 @@ import {DocumentService} from "./document.service";
 import {HttpClient} from "@angular/common/http";
 import { Location, LocationStrategy } from '@angular/common';
 import {SearchAggregation, SearchMode, SearchRequest} from "../model/searchrequest.model";
-import {PDFDocument, SearchDocResult} from "../model/document.model";
+import {PDFDocument, SearchDocResult, Tag} from "../model/document.model";
 
 
 @Injectable({providedIn: 'root'})
@@ -14,7 +14,7 @@ export class SearchService {
   constructor(private location: Location, private documentService : DocumentService, private http: HttpClient) {
   }
 
-  searchDocuments(searchQuery : string, skip : number, from : string, to : string, aggregation : string, mode : string) {
+  searchDocuments(searchQuery : string, tags : Tag[], skip : number, from : string, to : string, aggregation : string, mode : string) {
     const url = location.origin + "/dochausersrv/search";
     const req : SearchRequest = {
       aggregation: SearchAggregation[aggregation as keyof typeof SearchAggregation],
@@ -22,7 +22,8 @@ export class SearchService {
       skip : skip,
       from : from,
       to : to,
-      queryTerms : searchQuery.split(" ")
+      queryTerms : searchQuery.split(" "),
+      queryTags : tags
     };
 
     console.log(req);

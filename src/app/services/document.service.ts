@@ -1,6 +1,7 @@
 import {Injectable} from "@angular/core";
-import {PDFDocument, SearchDocResult} from "../model/document.model";
+import {PDFDocument, SearchDocResult, Tag} from "../model/document.model";
 import {BehaviorSubject, Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({providedIn: 'root'})
 export class DocumentService {
@@ -13,7 +14,7 @@ export class DocumentService {
 
   currentHitSkip : number = 0;
 
-  constructor() {
+  constructor(private http: HttpClient) {
   }
 
   setNewSearchResults(searchResult : SearchDocResult, paging: boolean) {
@@ -36,6 +37,26 @@ export class DocumentService {
 
   setHitSkip(skip : number) {
     this.currentHitSkip = skip;
+  }
+
+  addTag(document : PDFDocument, tag : Tag ) {
+    const tagAlreadyPresent : boolean = document.tags.some(arrTag => {
+      return tag.tagname === arrTag.tagname;
+    });
+    if (!tagAlreadyPresent) {
+      const url = location.origin + "/dochausersrv/document/" + document.id + "/" + tag.tagname;
+      this.http.put(url, "").subscribe();
+    }
+  }
+
+  removeTag(document : PDFDocument, tag : Tag ) {
+    const tagIsPresent : boolean = document.tags.some(arrTag => {
+      return tag.tagname === arrTag.tagname;
+    });
+    if (tagIsPresent) {
+      const url = location.origin + "/dochausersrv/document/" + document.id + "/" + tag.tagname;
+      this.http.delete(url).subscribe();
+    }
   }
 
 }

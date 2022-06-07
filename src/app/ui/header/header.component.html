@@ -30,10 +30,12 @@
 
 <mat-toolbar-row *ngIf="expandedHeader" class="tagbar">
 
-  <mat-chip-list selectable multiple cdkDropList cdkDropListOrientation="horizontal" >
-    <mat-chip #c="matChip" *ngFor="let tag of tags" [value]="tag.tagname" (click)="toggleTagSelection(c)" cdkDrag>
+  <mat-chip-list selectable multiple cdkDropList cdkDropListOrientation="horizontal" id="tag-list" >
+    <mat-chip #c="matChip" *ngFor="let tag of tags" [value]="tag.tagname"
+              (click)="toggleTagSelection(c)" [selected]="isSelected(tag.tagname)" cdkDrag>
       <mat-icon *ngIf="c.selected">check</mat-icon>
       {{tag.tagname}}
+      <div class="custom-placeholder" *cdkDragPlaceholder></div>
     </mat-chip>
   </mat-chip-list>
 

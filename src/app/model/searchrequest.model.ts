@@ -1,3 +1,5 @@
+import {Tag} from "./document.model";
+
 export enum SearchAggregation {
   AND ="AND",
   OR = "OR"
@@ -14,5 +16,6 @@ export interface SearchRequest {
   from : string
   to : string
   queryTerms : string[]
+  queryTags : Tag[]
 }
 

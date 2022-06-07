@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchService.searchDocuments("", 0, "", "", SearchAggregation.OR, SearchMode.FUZZY);
+    this.searchService.searchDocuments("", this.selectedTags, 0, "", "", SearchAggregation.OR, SearchMode.FUZZY);
     this.tagsService.tagResult.subscribe(tagResult => {
       this.tags = Array.from(tagResult);
       this.selectedTags = [];
@@ -48,7 +48,7 @@ export class HeaderComponent implements OnInit {
   }
 
   private executeSearch() {
-    this.searchService.searchDocuments(this.searchTerm, 0, "", "", SearchAggregation.OR, SearchMode.FUZZY);
+    this.searchService.searchDocuments(this.searchTerm,  this.selectedTags, 0, "", "", SearchAggregation.OR, SearchMode.FUZZY);
   }
 
   public openDefineTagsDialog() {
@@ -66,14 +66,16 @@ export class HeaderComponent implements OnInit {
     if (c.selected) {
       this.selectedTags.push({tagname: c.value});
     } else {
-      const index = this.selectedTags.indexOf({tagname: c.value});
+      const index = this.selectedTags.map(e => e.tagname).indexOf(c.value);
       if (index > -1) {
         this.selectedTags.splice(index, 1); // 2nd parameter means remove one item only
       }
     }
     this.changeSearchTerm();
-
-    console.log(this.selectedTags)
   }
 
+  isSelected(tagname: string) {
+    return this.selectedTags.map(e => e.tagname).indexOf(tagname) != -1;
+  }
+  
 }

@@ -1,6 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PDFDocument, Tag} from "../../../model/document.model";
 import {Location} from "@angular/common";
+import {copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
+import {TagsService} from "../../../services/tags.service";
+import {DocumentService} from "../../../services/document.service";
 
 @Component({
   selector: 'app-document-panel',
@@ -12,7 +15,7 @@ export class DocumentPanelComponent implements OnInit {
   @Input() document: PDFDocument;
   currentPreviewPage: number = 0;
 
-  constructor(private location: Location) {
+  constructor(private location: Location, private documentService : DocumentService) {
     // proper init of empty document makes this safer
     this.document = {
       id: "", name: "", directory: "", text: "", timestamp: "", origin: "",   thumbnails: [],
@@ -54,6 +57,24 @@ export class DocumentPanelComponent implements OnInit {
 
   getTags() : Tag[] {
     return this.document.tags;
+  }
+
+  drop(event: any) {
+    // Copy the data to my-variable
+    const prev_idx = event.previousIndex;
+    // this.my-variable = event.previousContainer.data[prev_idx];
+    console.log("Dropping " + event.item.element.nativeElement.innerText);
+    const newTag = {
+      tagname : event.item.element.nativeElement.innerText
+    }
+    this.documentService.addTag(this.document, newTag);
+
+    const tagAlreadyPresent : boolean = this.document.tags.some(arrTag => {
+      return newTag.tagname === arrTag.tagname;
+    });
+    if (!tagAlreadyPresent) {
+      this.document.tags.push(newTag);
+    }
   }
 
 }
