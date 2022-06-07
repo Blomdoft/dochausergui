@@ -6,4 +6,9 @@
     </app-document-panel>
     </mat-grid-tile>
   </mat-grid-list>
+  <mat-paginator #paginator [length]="hitCount"
+                 [pageSize]="100"
+                 aria-label="Select page"
+                 (page)="handlePage($event)" >
+  </mat-paginator>
 </div>

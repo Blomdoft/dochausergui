@@ -22,6 +22,7 @@ import { DefineTagDialogComponent } from './tags/define-tag-dialog/define-tag-di
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatChipsModule} from "@angular/material/chips";
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {MatPaginatorModule} from "@angular/material/paginator";
 
 @NgModule({
   declarations: [
@@ -31,25 +32,26 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
     DocumentPanelComponent,
     DefineTagDialogComponent
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatGridListModule,
-    MatBadgeModule,
-    MatInputModule,
-    HttpClientModule,
-    RouterModule.forRoot([]),
-    MatMenuModule,
-    MatDialogModule,
-    MatChipsModule,
-    DragDropModule
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule,
+        MatCardModule,
+        MatGridListModule,
+        MatBadgeModule,
+        MatInputModule,
+        HttpClientModule,
+        RouterModule.forRoot([]),
+        MatMenuModule,
+        MatDialogModule,
+        MatChipsModule,
+        DragDropModule,
+        MatPaginatorModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

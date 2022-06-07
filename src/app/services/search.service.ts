@@ -10,6 +10,7 @@ import {PDFDocument, SearchDocResult, Tag} from "../model/document.model";
 export class SearchService {
 
   lastSearchQuery : string ="";
+  lastSearch! : SearchRequest;
 
   constructor(private location: Location, private documentService : DocumentService, private http: HttpClient) {
   }
@@ -25,15 +26,24 @@ export class SearchService {
       queryTerms : searchQuery.split(" "),
       queryTags : tags
     };
+    this.lastSearch = req;
 
-    console.log(req);
     this.http.post<SearchDocResult>(url, req).subscribe(responseData => {
       console.log(responseData)
-      this.documentService.setNewSearchResults(responseData, (searchQuery === this.lastSearchQuery));
+      this.documentService.setNewSearchResults(responseData, false);
 
       if (searchQuery !== this.lastSearchQuery) {
         this.lastSearchQuery = searchQuery;
       }
+    });
+  }
+
+  pageSearchDocuments(skip: number) {
+    const url = location.origin + "/dochausersrv/search";
+    this.lastSearch.skip = skip;
+    this.http.post<SearchDocResult>(url, this.lastSearch).subscribe(responseData => {
+      console.log(responseData)
+      this.documentService.setNewSearchResults(responseData, true);
     });
   }
 

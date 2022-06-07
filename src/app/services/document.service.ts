@@ -12,6 +12,9 @@ export class DocumentService {
   private _totalHits: BehaviorSubject<number> = new BehaviorSubject(<number>0);
   public readonly totalHits: Observable<number> = this._totalHits.asObservable();
 
+  private _newSearchParams: BehaviorSubject<boolean> = new BehaviorSubject(<boolean>false);
+  public readonly newSearchParams: Observable<boolean> = this._newSearchParams.asObservable();
+
   currentHitSkip : number = 0;
 
   constructor(private http: HttpClient) {
@@ -20,7 +23,8 @@ export class DocumentService {
   setNewSearchResults(searchResult : SearchDocResult, paging: boolean) {
     this._searchResult.next(searchResult.documents);
     this._totalHits.next(searchResult.hitCount);
-    if (paging) this.resetHitSkip();
+    this._newSearchParams.next(!paging);
+    if (!paging) this.resetHitSkip();
   }
 
   getSearchResults() {
