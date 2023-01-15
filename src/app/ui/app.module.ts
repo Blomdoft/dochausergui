@@ -23,6 +23,7 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatChipsModule} from "@angular/material/chips";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import { DocumentDetailDialogComponent } from './document-list/document-panel/document-detail-dialog/document-detail-dialog.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     HeaderComponent,
     DocumentListComponent,
     DocumentPanelComponent,
-    DefineTagDialogComponent
+    DefineTagDialogComponent,
+    DocumentDetailDialogComponent
   ],
     imports: [
         BrowserModule,

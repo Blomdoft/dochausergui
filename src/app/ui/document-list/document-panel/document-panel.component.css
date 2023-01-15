@@ -34,7 +34,15 @@ mat-card{
 }
 
 .date {
-  align-self: flex-start;
+  align-self: center;
+}
+
+.pagecount {
+  align-self: center;
+}
+
+.edit-icon {
+  align-self: center;
 }
 
 .chiplist {
@@ -44,19 +52,19 @@ mat-card{
   align-self: flex-end;
 }
 
-.pagecount {
-  align-self: flex-end;
-}
+
 
 .flex-spacer {
   flex: 1 1 auto;
+
 }
 
 mat-chip {
   padding: 1px 4px !important;
   font-size: 10px;
-
 }
+
+
 
 .custom-placeholder {
   background: #ccc;

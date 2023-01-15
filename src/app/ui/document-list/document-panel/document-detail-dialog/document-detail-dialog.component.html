@@ -1,0 +1,19 @@
+<p class="header">Document Actions for <span class="name" >{{getDocumentName()}}</span></p>
+
+<mat-grid-list cols="2" rowHeight="190px">
+
+  <mat-grid-tile rowspan="2">
+    <a href="{{getFullDocumentURL()}}" target="_blank">
+      <img class="previewImage" src="{{getPreviewPageURL()}}" alt="">
+    </a>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <button mat-raised-button color="warn" (click)="deleteDocument()">Delete</button>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <button mat-raised-button (click)="closeDialogSave()">Close</button>
+  </mat-grid-tile>
+
+</mat-grid-list>

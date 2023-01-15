@@ -4,6 +4,9 @@ import {Location} from "@angular/common";
 import {copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
 import {TagsService} from "../../../services/tags.service";
 import {DocumentService} from "../../../services/document.service";
+import {DefineTagDialogComponent} from "../../tags/define-tag-dialog/define-tag-dialog.component";
+import {DocumentDetailDialogComponent} from "./document-detail-dialog/document-detail-dialog.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-document-panel',
@@ -16,7 +19,9 @@ export class DocumentPanelComponent implements OnInit {
   currentPreviewPage: number = 0;
   markedTag! : string;
 
-  constructor(private location: Location, private documentService : DocumentService) {
+  constructor(public dialog: MatDialog,
+              private location: Location,
+              private documentService : DocumentService) {
     // proper init of empty document makes this safer
     this.document = {
       id: "", name: "", directory: "", text: "", timestamp: "", origin: "",   thumbnails: [],
@@ -61,10 +66,7 @@ export class DocumentPanelComponent implements OnInit {
   }
 
   drop(event: any) {
-    // Copy the data to my-variable
-    const prev_idx = event.previousIndex;
     // this.my-variable = event.previousContainer.data[prev_idx];
-    console.log("Dropping " + event.item.element.nativeElement.innerText);
     const newTag = {
       tagname : event.item.element.nativeElement.innerText
     }
@@ -99,5 +101,14 @@ export class DocumentPanelComponent implements OnInit {
     }
   }
 
+  openDocumentDetailDialog() {
+    this.dialog.open(DocumentDetailDialogComponent, {
+      width: '90%',
+      height: 'fit',
+      data: {
+        dataKey: this.document
+      }
+    })
+  }
 }
 

@@ -63,4 +63,9 @@ export class DocumentService {
     }
   }
 
+  deleteDocument(document : PDFDocument) {
+    const url = location.origin + "/dochausersrv/document/" + document.id;
+    this.http.delete(url).subscribe();
+  }
+
 }
