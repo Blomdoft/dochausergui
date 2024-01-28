@@ -7,6 +7,7 @@ export interface PDFDocument {
   origin: string
   thumbnails: Thumbnail[]
   tags: Tag[]
+  analysis: Analysis
 }
 
 export interface Thumbnail {
@@ -21,4 +22,13 @@ export interface Tag {
 export interface SearchDocResult {
   documents: PDFDocument[]
   hitCount: number
+}
+
+export interface Analysis {
+  senderAddress: string;
+  receiverAddress: string;
+  intent: string;
+  filename: string;
+  category_level1: string;
+  category_level2: string;
 }

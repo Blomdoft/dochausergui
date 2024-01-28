@@ -24,6 +24,7 @@ import {MatChipsModule} from "@angular/material/chips";
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { DocumentDetailDialogComponent } from './document-list/document-panel/document-detail-dialog/document-detail-dialog.component';
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { DocumentDetailDialogComponent } from './document-list/document-panel/do
         MatDialogModule,
         MatChipsModule,
         DragDropModule,
-        MatPaginatorModule
+        MatPaginatorModule,
+        MatTooltipModule
     ],
   providers: [],
   bootstrap: [AppComponent]

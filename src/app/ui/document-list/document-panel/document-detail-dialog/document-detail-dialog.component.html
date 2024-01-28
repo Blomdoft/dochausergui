@@ -1,18 +1,41 @@
 <p class="header">Document Actions for <span class="name" >{{getDocumentName()}}</span></p>
 
-<mat-grid-list cols="2" rowHeight="190px">
+<mat-grid-list cols="2" rowHeight="38px">
 
-  <mat-grid-tile rowspan="2">
+  <mat-grid-tile rowspan="10">
     <a href="{{getFullDocumentURL()}}" target="_blank">
       <img class="previewImage" src="{{getPreviewPageURL()}}" alt="">
     </a>
   </mat-grid-tile>
 
-  <mat-grid-tile>
-    <button mat-raised-button color="warn" (click)="deleteDocument()">Delete</button>
+  <mat-grid-tile class="analysis-tile" rowspan="8">
+<div *ngIf="document.analysis">
+    <div>
+      <strong>Sender Address:</strong> {{document.analysis.senderAddress}}
+    </div>
+    <div>
+      <strong>Receiver Address:</strong> {{document.analysis.receiverAddress}}
+    </div>
+  <div>&nbsp;</div>
+  <div>
+      <strong>Intent:</strong> {{document.analysis.intent}}
+    </div>
+  <div>&nbsp;</div>
+  <div>
+      <strong>Filename:</strong> {{document.analysis.filename}}
+    </div>
+    <div>
+      <strong>Category 1:</strong> {{document.analysis.category_level1}}
+    </div>
+    <div>
+      <strong>Category 2:</strong> {{document.analysis.category_level2}}
+    </div>
+  </div>
   </mat-grid-tile>
 
-  <mat-grid-tile>
+  <mat-grid-tile class="button-tile" rowspan="2">
+    <button mat-raised-button color="warn" (click)="deleteDocument()">Delete</button>
+    &nbsp;
     <button mat-raised-button (click)="closeDialogSave()">Close</button>
   </mat-grid-tile>
 

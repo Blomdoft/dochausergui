@@ -26,6 +26,12 @@ mat-grid-list {
   padding: 0;
 }
 
+.analysis-tile {
+}
+
+.button-tile {
+}
+
 mat-grid-tile {
   background-color: #e8eaf6;
   margin: 0;

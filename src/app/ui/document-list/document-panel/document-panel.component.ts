@@ -1,17 +1,14 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {PDFDocument, Tag} from "../../../model/document.model";
 import {Location} from "@angular/common";
-import {copyArrayItem, moveItemInArray} from "@angular/cdk/drag-drop";
-import {TagsService} from "../../../services/tags.service";
 import {DocumentService} from "../../../services/document.service";
-import {DefineTagDialogComponent} from "../../tags/define-tag-dialog/define-tag-dialog.component";
 import {DocumentDetailDialogComponent} from "./document-detail-dialog/document-detail-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-document-panel',
   templateUrl: './document-panel.component.html',
-  styleUrls: ['./document-panel.component.css']
+  styleUrls: ['./document-panel.component.css'],
 })
 export class DocumentPanelComponent implements OnInit {
 
@@ -24,12 +21,16 @@ export class DocumentPanelComponent implements OnInit {
               private documentService : DocumentService) {
     // proper init of empty document makes this safer
     this.document = {
+      analysis: { senderAddress: "", receiverAddress: "", intent: "", filename:"", category_level1:"", category_level2:""},
       id: "", name: "", directory: "", text: "", timestamp: "", origin: "",   thumbnails: [],
       tags: []};
-
   }
 
   ngOnInit(): void {
+  }
+
+  getTitle(): string {
+    return this.document?.analysis?.intent ?? "";
   }
 
   getNumberOfPages() : number {
