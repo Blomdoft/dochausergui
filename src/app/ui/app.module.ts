@@ -25,6 +25,8 @@ import {DragDropModule} from "@angular/cdk/drag-drop";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import { DocumentDetailDialogComponent } from './document-list/document-panel/document-detail-dialog/document-detail-dialog.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
+import {FileUploadComponent} from "./upload/file-upload.component";
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -33,29 +35,31 @@ import {MatTooltipModule} from "@angular/material/tooltip";
     DocumentListComponent,
     DocumentPanelComponent,
     DefineTagDialogComponent,
-    DocumentDetailDialogComponent
+    DocumentDetailDialogComponent,
+    FileUploadComponent
   ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatCardModule,
-        MatGridListModule,
-        MatBadgeModule,
-        MatInputModule,
-        HttpClientModule,
-        RouterModule.forRoot([]),
-        MatMenuModule,
-        MatDialogModule,
-        MatChipsModule,
-        DragDropModule,
-        MatPaginatorModule,
-        MatTooltipModule
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatGridListModule,
+    MatBadgeModule,
+    MatInputModule,
+    HttpClientModule,
+    RouterModule.forRoot([]),
+    MatMenuModule,
+    MatDialogModule,
+    MatChipsModule,
+    DragDropModule,
+    MatPaginatorModule,
+    MatTooltipModule,
+    MatTableModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

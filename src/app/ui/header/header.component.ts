@@ -6,6 +6,7 @@ import {DefineTagDialogComponent} from "../tags/define-tag-dialog/define-tag-dia
 import {TagsService} from "../../services/tags.service";
 import {Tag} from "../../model/document.model";
 import {MatChip} from "@angular/material/chips";
+import {FileUploadComponent} from "../upload/file-upload.component";
 
 
 @Component({
@@ -54,6 +55,16 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(DefineTagDialogComponent, {
       width: '90%'
          })
+  }
+
+  openUploadDialog() {
+    const dialogRef = this.dialog.open(FileUploadComponent, {
+      width: '90%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // handle the result, which includes selected files
+    });
   }
 
   toggleExpandedHeader() {
